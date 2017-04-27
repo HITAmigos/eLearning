@@ -1,0 +1,11 @@
+document.writeln('<table bgcolor="#FFFFFF" cellpadding="0" cellspacing="0" width="100%">');
+document.writeln(' <tr><td height="4" bgcolor="#3585AF" width="100%"></td></tr>');
+document.writeln(' <tr>');
+document.writeln('   <td height="60" width="100%" bgcolor="#DDF0FC" align="center">');
+document.writeln('        </p>');
+document.writeln('     <p>海南大学应用科技学院&nbsp;&nbsp;&nbsp;《平面设计——PhotoShop CS2 教程》&nbsp;&nbsp;&nbsp;主讲教师：钟杰卓<br>');
+document.writeln('      E-mail：zjz@scuta.org &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; QQ：110386521');
+document.writeln('     </p>');
+document.writeln('     </td>');
+document.writeln(' </tr>');
+document.writeln('</table>');

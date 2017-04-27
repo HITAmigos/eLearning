@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd"> 
+        
+     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        	<property name="dataSource" ref="dataSource"></property>
+        
+        <property name="hibernateProperties">
+        	<props>
+        		<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+        		<prop key="hibernate.show_sql">true</prop>
+        		<prop key="hibernate.format_sql">true</prop>
+        	</props>
+        </property>
+        
+        <!-- 指定映射文件 -->
+        <property name="mappingResources">
+        	<list>
+        		<value>cn/tjcu/entity/Book.hbm.xml</value>
+        		<value>cn/tjcu/entity/EnglishLearning.hbm.xml</value>
+        		<value>cn/tjcu/entity/FindJob.hbm.xml</value>
+        		<value>cn/tjcu/entity/Food.hbm.xml</value>
+        		<value>cn/tjcu/entity/Question.hbm.xml</value>
+        		<value>cn/tjcu/entity/StudyWeb.hbm.xml</value>
+        		<value>cn/tjcu/entity/User.hbm.xml</value>
+        	</list>
+        	
+        </property>			
+	</bean>
+        
+     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+     		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql://localhost:3306/eLearning"/>
+			<property name="username" value="root"/>
+			<property name="password" value="root"/>
+     </bean> 
+     
+     <!-- LoginAction -->
+ 	 <bean id="login" class="cn.tjcu.action.LoginAction">
+     	<property name="userService" ref="userService"></property>
+     </bean> 
+     
+     <bean id="userService" class="cn.tjcu.service.UserServiceImpl">
+     	<property name="userDao" ref="userDao"></property>
+     </bean>
+        
+     <bean id="userDao" class="cn.tjcu.dao.UserDaoImpl">
+     	<property name="hibernateTemplate" ref="hibernataTemplate"></property>
+     </bean>   
+     
+     <bean id="hibernataTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+     	<property name="sessionFactory" ref="sessionFactory"></property>
+     </bean>
+     
+     <import resource="findJob_bean.xml"/>
+     <import resource="question_bean.xml"/>
+     <import resource="englishLearning_bean.xml"/>
+	 <import resource="studyWeb_bean.xml"/>
+	 <import resource="food_bean.xml"/>
+	 <import resource="book_bean.xml"/>
+
+     
+     
+      <!-- 配置事务 ，第一步配置事务管理器-->
+ 	 <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+ 		<!-- 注入SessionFactory -->
+ 		<property name="sessionFactory" ref="sessionFactory"></property>	
+ 	 </bean>
+ 	 <!--第二步，开启事务注解  -->
+ 	 <tx:annotation-driven transaction-manager="transactionManager"/>
+     
+    <!--  <bean id="test" class="cn.tjcu.action.TestAction">
+     	<property name="userService" ref="userServiceImpl"></property>
+     </bean> -->
+</beans>

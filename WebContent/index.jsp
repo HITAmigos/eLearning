@@ -5,9 +5,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>eLearning</title>
 </head>
+<frameset rows="97,*,58" cols="*" framespacing="0" frameborder="0" >
+		<frame src="top.jsp" frameborder="no" noresize="noresize">
+		
+		<frameset rows="*" cols="218,*" framespacing="0" frameborder="0">
+			<frame src="left.jsp" frameborder="no" noresize="noresize">
+			<frame src="main.jsp" frameborder="no" noresize="noresize" name="main">
+		</frameset>
+		
+		<frame src="bottom.jsp" frameborder="no" noresize="noresize" scrolling="no">
+</frameset>
+
+<noframes>
 <body>
-test
 </body>
+</noframes>
 </html>

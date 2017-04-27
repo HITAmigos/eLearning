@@ -1,10 +1,50 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
-
 <struts>
+	<package name="user" extends="struts-default" namespace="/">
 
-   
-
+		<action name="login" class="login">
+			<result name="usersuccess">/index.jsp</result>
+			<result name="adminsuccess">/index.jsp</result>
+			<result name="failer">/error.jsp</result>
+		</action>
+		
+		<action name="findJob_*" class="findJob" method="{1}">   <!-- *代表方法名 -->
+			<result name="list">/findJob.jsp</result>
+			<result name="test">/findJob.jsp</result>
+			<result name="findJob_detail">/detailPage/findJob_detail.jsp</result>
+			<result name="find">/findJob.jsp</result>
+		</action>
+		
+		<action name="question_*" class="question" method="{1}">  
+			<result name="list">/question.jsp</result>
+			<result name="test">/question.jsp</result>
+			<result name="question_detail">/detailPage/question_detail.jsp</result>
+		</action>
+		
+		<action name="englishLearning_*" class="englishLearning" method="{1}">  
+			<result name="list">/englishLearning.jsp</result>
+			<result name="test">/englishLearning.jsp</result>
+			<result name="detail">/detailPage/englishLearning_detail.jsp</result>
+		</action>
+		
+		<action name="studyWeb_*" class="studyWeb" method="{1}">  
+			<result name="list">/studyWeb.jsp</result>
+			<result name="test">/studyWeb.jsp</result>
+		</action>
+		
+		<action name="food_*" class="food" method="{1}">  
+			<result name="list">/food.jsp</result>
+			<result name="test">/food.jsp</result>
+			<result name="detail">/detailPage/food_detail.jsp</result>
+		</action>
+		
+		<action name="book_*" class="book" method="{1}">  
+			<result name="list">/book.jsp</result>
+			<result name="test">/book.jsp</result>
+		</action>
+	</package>
+	
 </struts>

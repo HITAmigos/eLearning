@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="cn.tjcu.entity.FindJob" table="FindJob">
+
+	<id name="jid" column="jid">
+		<generator class="increment"></generator>
+	</id>
+	
+	<property name="jname" column="jname"></property>
+	<property name="jcontent" column="jcontent"></property>
+	<property name="jdate" column="jdate"></property>
+
+</class>
+</hibernate-mapping>
